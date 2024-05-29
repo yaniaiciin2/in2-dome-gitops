@@ -31,14 +31,14 @@ ionosctl login -t <token>
 ## 2. Create a DataCenter in IONOS
 
 ```bash
-export IN2_DOME_DEV_DATACENTER_ID=$(ionosctl datacenter create --name in2-dome-dev -o json | jq -r '.items[0].id')
+export IN2_DOME_DEV_DATACENTER_ID=$(ionosctl datacenter create --name in2-ssi-dev -o json | jq -r '.items[0].id')
 watch ionosctl datacenter get -i $IN2_DOME_DEV_DATACENTER_ID
 ```
 
 ## 3. Create a Kubernetes cluster
 
 ```bash
-export IN2_DOME_DEV_K8S_CLUSTER_ID=$(ionosctl k8s cluster create --name in2-dome-dev-k8s -o json | jq -r '.items[0].id')
+export IN2_DOME_DEV_K8S_CLUSTER_ID=$(ionosctl k8s cluster create --name in2-ssi-dev-k8s -o json | jq -r '.items[0].id')
 watch ionosctl k8s cluster get -i $IN2_DOME_DEV_K8S_CLUSTER_ID
 ```
 
@@ -59,11 +59,6 @@ ionosctl k8s nodepool create --cluster-id $IN2_DOME_DEV_K8S_CLUSTER_ID \    --na
 
 ```bash
 ionosctl k8s kubeconfig get --cluster-id $IN2_DOME_DEV_K8S_CLUSTER_ID > in2-dome-dev-k8s-config.json
-export KUBECONFIG=$(pwd)/in2-dome-dev-k8s-config.json
-```
-
-```bash
-ionosctl k8s kubeconfig get --cluster-id 29adce47-9a3d-4e36-a7bb-3e7415c2f90b > in2-dome-dev-k8s-config.json
 export KUBECONFIG=$(pwd)/in2-dome-dev-k8s-config.json
 ```
 
