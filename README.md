@@ -92,3 +92,26 @@ kubectl create namespace argocd
 ```bash
 kubectl apply -k ./extension/ -n argocd
 ```
+
+## 3. Deploying Namespaces Application
+
+```bash
+kubectl apply -f applications_dev/namespaces.yaml -n argocd
+```
+
+## 4. Deploying Sealed-Secrets Application
+
+> NOTE: This environment is for dev purposes, we do not need to encrypt the secrets.
+
+```bash
+kubectl apply -f applications_dev/sealed-secrets.yaml -n argocd
+```
+
+## 5. Deploying Ingress Application
+
+```bash
+kubectl apply -f applications_dev/ingress.yaml -n argocd
+```
+
+
+kubectl get applications -n argocd
