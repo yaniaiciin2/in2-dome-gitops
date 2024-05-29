@@ -113,5 +113,30 @@ kubectl apply -f applications_dev/sealed-secrets.yaml -n argocd
 kubectl apply -f applications_dev/ingress.yaml -n argocd
 ```
 
+> NOTE: You can get all the applications deployed in the argocd namespace by running the following command:
 
+```bash
 kubectl get applications -n argocd
+```
+
+# ArgoCD
+
+## 1. Install the ArgoCD CLI
+
+```bash
+brew install argocd
+```
+
+## 2. Access to the ArgoCD UI
+
+```bash
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+```
+
+> NOTE: Open your browser and go to [http://localhost:8080](http://localhost:8080) and login with the default credentials: `admin`/`admin`.
+
+## 3. Get the ArgoCD password
+
+```bash
+argocd admin initial-password -n argocd
+```
