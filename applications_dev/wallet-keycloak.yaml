@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wallet-keycloak
+  namespace: argocd
+  labels:
+    purpose: wallet
+spec:
+  destination:
+    namespace: wallet
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: ionos_dev/wallet/keycloak
+    repoURL: https://github.com/in2workspace/in2-dome-gitops
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

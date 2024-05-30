@@ -71,7 +71,7 @@ kubectl config get-contexts
 ## 8. Access to the context
 
 ```bash
-kubectl config use-context cluster-admin@in2-dome-dev-k8s
+kubectl config use-context cluster-admin@in2-ssi-dev-k8s
 ```
 
 # GitOps Setup
