@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: nginx
-  pullPolicy: IfNotPresent
+  repository: in2workspace/issuer-api
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "v1.0.0-SNAPSHOT"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -71,21 +71,28 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
-livenessProbe:
-  httpGet:
-    path: /
-    port: http
 readinessProbe:
-  httpGet:
-    path: /
-    port: http
+  path: /health
+  port: http
+  # IN2: Extra attributes for the readinessProbe
+  initialDelaySeconds: 40
+  failureThreshold: 6
+  periodSeconds: 10
+
+livenessProbe:
+  path: /health
+  port: http
+  # IN2: Extra attributes for the livenessProbe
+  initialDelaySeconds: 40
+  failureThreshold: 6
+  periodSeconds: 10
 
 autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
 
 # Additional volumes on the output Deployment definition.
 volumes: []
@@ -105,3 +112,39 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# IN2: Extra attributes for the issuer-api
+app:
+  profile: default
+  logLevel: DEBUG
+  mail:
+    host: host.docker.internal
+    port: 1025
+  api:
+    externalDomain: http://dome.saas.local
+    internalDomain: http://issuer-api:8080
+    configSource: yaml
+    cacheLifetimeCredentialOffer: 10
+    cacheLifetimeVerifiableCredential: 10
+  authServer:
+    provider: keycloak
+    externalDomain: http://localhost:8081
+    internalDomain: http://issuer-keycloak:8080
+    realm: CredentialIssuer
+    client:
+      clientId: oidc4vci-wallet-client
+      clientSecret: qVB2taQhqWmVndVIG5QR1INH8rfsbTrS
+      username: user
+      password: user
+    paths:
+      tokenPath: /realms/CredentialIssuer/protocol/openid-connect/token
+  ui:
+    externalDomain: http://localhost:4201
+    internalDomain: http://wallet-ui:8080
+
+db:
+  host: issuer-postgres
+  port: 5432
+  name: issuer
+  username: postgres
+  password: postgres

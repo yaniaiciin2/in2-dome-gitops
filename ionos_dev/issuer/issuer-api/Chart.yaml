@@ -11,4 +11,11 @@ version: 0.1.0-PRE-1
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
-appVersion: "1.0.0-SNAPSHOT"
+appVersion: "v1.0.0-SNAPSHOT"
+
+sources:
+  - https://github.com/in2workspace/issuer-api
+
+maintainers:
+  - name: IN2 Team
+    email: domesupport@in2.es

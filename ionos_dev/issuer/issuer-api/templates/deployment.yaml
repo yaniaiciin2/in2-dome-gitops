@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "issuer-api.fullname" . }}
+  namespace: {{ $.Release.Namespace | quote }}
   labels:
     {{- include "issuer-api.labels" . | nindent 4 }}
 spec:
@@ -30,6 +31,28 @@ spec:
       serviceAccountName: {{ include "issuer-api.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      # This is the init container that checks the availability of the external services
+{{/*      initContainers:*/}}
+{{/*        - name: check-external-services*/}}
+{{/*            image: curlimages/curl*/}}
+{{/*            command:*/}}
+{{/*              - sh*/}}
+{{/*              - -c*/}}
+{{/*              - >*/}}
+{{/*                echo "Checking availability for: {{ .Values.app.broker.internalDomain }}/q/health";*/}}
+{{/*                echo "Checking availability for: {{ .Values.app.dltAdapter.internalDomain }}/health";*/}}
+{{/*                response1=$(curl -si {{ .Values.app.broker.internalDomain }}/q/health);*/}}
+{{/*                response2=$(curl -si {{ .Values.app.dltAdapter.internalDomain }}/health);*/}}
+{{/*                until echo "$response1" | grep -q "HTTP/1.[01] 200 OK" && echo "$response2" | grep -q "HTTP/1.[01] 200 OK"; do*/}}
+{{/*                  echo "Waiting for external services to be available at {{ .Values.app.broker.internalDomain }}/q/health and {{ .Values.app.dltAdapter.internalDomain }}/health...";*/}}
+{{/*                  echo "Response from {{ .Values.app.broker.internalDomain }}/q/health:";*/}}
+{{/*                  echo "$response1";*/}}
+{{/*                  echo "Response from {{ .Values.app.dltAdapter.internalDomain }}/health:";*/}}
+{{/*                  echo "$response2";*/}}
+{{/*                  sleep 10;*/}}
+{{/*                  response1=$(curl -si {{ .Values.app.broker.internalDomain }}/q/health);*/}}
+{{/*                  response2=$(curl -si {{ .Values.app.dltAdapter.internalDomain }}/health);*/}}
+{{/*                done;*/}}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -44,6 +67,56 @@ spec:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
             {{- toYaml .Values.readinessProbe | nindent 12 }}
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: {{.Values.app.profile}}
+            - name: LOGGING_LEVEL_ROOT
+              value: {{.Values.app.logLevel}}
+            - name: SPRING_R2DBC_URL
+              value: r2dbc:postgresql://{{.Values.db.host}}:{{.Values.db.port}}/{{.Values.db.name}}
+            - name: SPRING_R2DBC_USERNAME
+              value: {{.Values.db.username}}
+            - name: SPRING_R2DBC_PASSWORD
+              value: {{.Values.db.password}}
+            - name: SPRING_FLYWAY_URL
+              value: jdbc:postgresql://{{.Values.db.host}}:{{.Values.db.port}}/{{.Values.db.name}}
+            - name: SPRING_MAIL_HOST
+              value: {{.Values.app.mail.host}}
+            - name: SPRING_MAIL_PORT
+              value: {{.Values.app.mail.port}}
+            - name: API_EXTERNAL_DOMAIN
+              value: {{.Values.app.api.externalDomain}}
+            - name: API_INTERNAL_DOMAIN
+              value: {{.Values.app.api.internalDomain}}
+            - name: API_CONFIG_SOURCE
+              value: {{.Values.app.api.configSource}}
+            - name: API_CACHE_LIFETIME_CREDENTIAL_OFFER
+              value: {{.Values.app.api.cacheLifetimeCredentialOffer}}
+            - name: API_CACHE_LIFETIME_VERIFIABLE_CREDENTIAL
+              value: {{.Values.app.api.cacheLifetimeVerifiableCredential}}
+            - name: AUTH_SERVER_PROVIDER
+              value: {{.Values.app.authServer.provider}}
+            - name: AUTH_SERVER_EXTERNAL_DOMAIN
+              value: {{.Values.app.authServer.externalDomain}}
+            - name: AUTH_SERVER_INTERNAL_DOMAIN
+              value: {{.Values.app.authServer.internalDomain}}
+            - name: AUTH_SERVER_REALM
+              value: {{.Values.app.authServer.realm}}
+            - name: AUTH_SERVER_CLIENT_CLIENT_ID
+              value: {{.Values.app.authServer.client.clientId}}
+            - name: AUTH_SERVER_CLIENT_CLIENT_SECRET
+              value: {{.Values.app.authServer.client.clientSecret}}
+            - name: AUTH_SERVER_PATHS_TOKEN_PATH
+              value: {{.Values.app.authServer.paths.tokenPath}}
+            - name: AUTH_SERVER_CLIENT_USERNAME
+              value: {{.Values.app.authServer.client.username}}
+            - name: AUTH_SERVER_CLIENT_PASSWORD
+              value: {{.Values.app.authServer.client.password}}
+            - name: ISSUER_UI_EXTERNAL_DOMAIN
+              value: {{.Values.app.ui.externalDomain}}
+            - name: ISSUER_UI_INTERNAL_DOMAIN
+              value: {{.Values.app.ui.internalDomain}}
+
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.volumeMounts }}
