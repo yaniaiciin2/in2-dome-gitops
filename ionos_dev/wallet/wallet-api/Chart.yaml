@@ -1,7 +1,0 @@
-apiVersion: v2
-name: wallet-api
-description: Chart holder for argo-cd
-
-type: application
-version: 1.0.0-PRE-1
-appVersion: 1.2.0
