@@ -7,7 +7,7 @@ metadata:
     purpose: access-node
 spec:
   destination:
-    namespace: access-node
+    namespace: access-node-a
     server: https://kubernetes.default.svc
   project: default
   source:
