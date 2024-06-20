@@ -4,6 +4,7 @@ ingress-nginx:
     nodeSelector:
       nodepool: ingress
     service:
+      loadBalancerIP: 85.215.236.130
       annotations:
         cloud.ionos.com/node-selector: nodepool=ingress
     kind: DaemonSet
