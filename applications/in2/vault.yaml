@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: ionos/wallet/vault
-    repoURL: https://github.com/in2wokspace/in2-dome-gitops
+    repoURL: https://github.com/in2workspace/in2-dome-gitops
     targetRevision: HEAD
   syncPolicy:
     automated:
