@@ -6,14 +6,14 @@ metadata:
   labels:
     purpose: in2
 spec:
+  destination:
+    namespace: in2
+    server: https://kubernetes.default.svc
   project: default
   source:
+    path: ionos/wallet/vault
     repoURL: https://github.com/in2wokspace/in2-dome-gitops
     targetRevision: HEAD
-    path: ionos/wallet/vault
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: in2
   syncPolicy:
     automated:
       prune: true
