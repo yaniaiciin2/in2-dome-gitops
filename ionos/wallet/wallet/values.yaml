@@ -15,12 +15,12 @@ wallet:
       hosts:
         - host: 85.215.236.130.nip.io
           paths:
-            - path: "/wallet-api"
+            - path: /wallet-api
               pathType: Prefix
-#      tls:
-#        - hosts:
-#            - 85.215.236.130
-#          secretName: wallet-tls-secret
+      tls:
+        - hosts:
+            - 85.215.236.130.nip.io
+          secretName: wallet-tls-secret
     ## deployment specific configuration
     app:
       internalServerPort: 8080
@@ -101,12 +101,12 @@ wallet:
       hosts:
         - host: 85.215.236.130.nip.io # cambiar por el dominio en el futuro
           paths:
-            - path: "/"
+            - path: /
               pathType: Prefix
-#      tls:
-#        - hosts:
-#            - wallet.dome-marketplace-sbx.org
-#          secretName: wallet-tls-secret
+      tls:
+        - hosts:
+            - 85.215.236.130.nip.io
+          secretName: wallet-tls-secret
     ## deployment specific configuration
     app:
       internalServerPort: 8080
@@ -142,12 +142,12 @@ wallet:
       hosts:
         - host: 85.215.236.130.nip.io
           paths:
-            - path: "/keycloak"
+            - path: /keycloak
               pathType: Prefix
-#      tls:
-#        - hosts:
-#            - wallet.dome-marketplace-sbx.org
-#          secretName: wallet-tls-secret
+      tls:
+        - hosts:
+            - 85.215.236.130.nip.io
+          secretName: wallet-tls-secret
     ## deployment specific configuration
     app:
       internalServerPort: 8080
