@@ -99,7 +99,7 @@ wallet:
 #      annotations:
 #        cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
       hosts:
-        - host: 85.215.236.130
+        - host: 85.215.236.130.nip.io # cambiar por el dominio en el futuro
           paths:
             - path: /
               pathType: Prefix
