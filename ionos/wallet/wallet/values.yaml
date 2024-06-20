@@ -102,7 +102,7 @@ wallet:
         - host: 85.215.236.130.nip.io # cambiar por el dominio en el futuro
           paths:
             - path: /
-              pathType: ImplementationSpecific #Prefix
+              pathType: Prefix
 #      tls:
 #        - hosts:
 #            - wallet.dome-marketplace-sbx.org
