@@ -6,7 +6,6 @@ wallet:
     enabled: true
     # -- overrides the generated name, provides stable service names - this should be avoided if multiple instances are available in the same namespace
     fullnameOverride: wallet-api
-    ## ingress specific configuration
     ingress:
       enabled: true
       className: nginx
@@ -15,8 +14,7 @@ wallet:
       hosts:
         - host: 85.215.236.130.nip.io
           paths:
-            - "/wallet-api"
-#              pathType: Prefix
+            - path: /wallet-api
 #      tls:
 #        - hosts:
 #            - 85.215.236.130.nip.io
@@ -101,7 +99,7 @@ wallet:
       hosts:
         - host: 85.215.236.130.nip.io # cambiar por el dominio en el futuro
           paths:
-            - "/"
+            - path: /
 #              pathType: Prefix
 #      tls:
 #        - hosts:
@@ -142,8 +140,7 @@ wallet:
       hosts:
         - host: 85.215.236.130.nip.io
           paths:
-            - "/keycloak"
-#              pathType: Prefix
+            - path: /keycloak
 #      tls:
 #        - hosts:
 #            - 85.215.236.130.nip.io
