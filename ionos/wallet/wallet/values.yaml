@@ -134,10 +134,10 @@ wallet:
     fullnameOverride: dome-wallet-keycloak
     # -- Added because the rollout is not working
     readinessProbe:
-      path: /keycloak/health
+      path: /keycloak1/health
     # -- Added because the rollout is not working
     livenessProbe:
-      path: /keycloak/health
+      path: /keycloak1/health
     ## ingress specific configuration
     ingress:
       enabled: true
