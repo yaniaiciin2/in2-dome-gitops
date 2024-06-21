@@ -132,6 +132,11 @@ wallet:
     enabled: true
     # -- overrides the generated name, provides stable service names - this should be avoided if multiple instances are available in the same namespace
     fullnameOverride: dome-wallet-keycloak
+    image:
+      repository: in2workspace/dome-wallet-keycloak
+      # Overrides the image tag whose default is the chart appVersion.
+      tag: v1.0.0-SNAPSHOT
+      pullPolicy: Always
     # -- Added because the rollout is not working
     readinessProbe:
       path: /keycloak/health
