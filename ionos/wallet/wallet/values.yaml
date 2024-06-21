@@ -26,11 +26,11 @@ wallet:
       logLevel: INFO
       basePath: /wallet-api
       walletUi:
-        scheme: http
+        scheme: https
         domain: 85.215.236.130.nip.io
       authServer:
         external:
-          scheme: http
+          scheme: https
           domain: 85.215.236.130.nip.io
           port: 443
           path: /keycloak/realms/wallet
@@ -111,9 +111,9 @@ wallet:
       internalServerPort: 8080
       walletApi:
         # Este internalDomain es en realidad el external
-        internalDomain: http://85.215.236.130.nip.io/wallet-api
+        internalDomain: https://85.215.236.130.nip.io/wallet-api
         # ws = sin certificado, wss = con certificado
-        websocketExternalDomain: ws://85.215.236.130.nip.io/wallet-api
+        websocketExternalDomain: wss://85.215.236.130.nip.io/wallet-api
 #        websocketPath: /api/v1/pin
 #        executeContentPath: /api/v1/execute-content
 #        requestCredentialPath: /api/v1/request-credential
@@ -123,7 +123,7 @@ wallet:
 #        requestSignedCredentialPath: /api/v1/request-signed-credential
 #        cborPath: /api/v1/vp/cbor
       iam:
-        external_domain: http://85.215.236.130.nip.io/keycloak
+        external_domain: https://85.215.236.130.nip.io/keycloak
 #        realm_path: /realms/wallet
 
   ## configuration for the dome-wallet-keycloak
