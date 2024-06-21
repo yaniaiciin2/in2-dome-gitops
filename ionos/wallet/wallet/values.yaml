@@ -100,7 +100,7 @@ wallet:
       hosts:
         - host: 85.215.236.130.nip.io # cambiar por el dominio en el futuro
           paths:
-            - path: /
+            - path: /wallet-ui
               pathType: Prefix
 #      tls:
 #        - hosts:
@@ -134,10 +134,10 @@ wallet:
     fullnameOverride: dome-wallet-keycloak
     # -- Added because the rollout is not working
     readinessProbe:
-      path: /keycloak1/health
+      path: /health
     # -- Added because the rollout is not working
     livenessProbe:
-      path: /keycloak1/health
+      path: /health
     ## ingress specific configuration
     ingress:
       enabled: true
@@ -147,8 +147,8 @@ wallet:
       hosts:
         - host: 85.215.236.130.nip.io
           paths:
-            - path: /keycloak
-              pathType: ImplementationSpecific
+            - path: /
+              pathType: Prefix
 #      tls:
 #        - hosts:
 #            - 85.215.236.130.nip.io
@@ -157,7 +157,7 @@ wallet:
     app:
       internalServerPort: 8080
       keycloak:
-        relativePath: "/keycloak1/"
+        relativePath: ""
         admin: admin
         password: admin
         existingSecret:
