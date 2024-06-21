@@ -16,10 +16,10 @@ wallet:
           paths:
             - path: /wallet-api
               pathType: Prefix
-#      tls:
-#        - hosts:
-#            - 85.215.236.130.nip.io
-#          secretName: wallet-tls-secret
+      tls:
+        - hosts:
+            - 85.215.236.130.nip.io
+          secretName: ingress-nginx-admission
     ## deployment specific configuration
     app:
       internalServerPort: 8080
@@ -102,10 +102,10 @@ wallet:
           paths:
             - path: /
               pathType: Prefix
-#      tls:
-#        - hosts:
-#            - 85.215.236.130.nip.io
-#          secretName: wallet-tls-secret
+      tls:
+        - hosts:
+            - 85.215.236.130.nip.io
+          secretName: ingress-nginx-admission
     ## deployment specific configuration
     app:
       internalServerPort: 8080
@@ -154,10 +154,10 @@ wallet:
           paths:
             - path: /keycloak
               pathType: Prefix
-#      tls:
-#        - hosts:
-#            - 85.215.236.130.nip.io
-#          secretName: wallet-tls-secret
+      tls:
+        - hosts:
+            - 85.215.236.130.nip.io
+          secretName: ingress-nginx-admission
     ## deployment specific configuration
     app:
       internalServerPort: 8080
