@@ -157,6 +157,7 @@ wallet:
     app:
       internalServerPort: 8080
       keycloak:
+        proxy: forwarded
         relativePath: ""
         admin: admin
         password: admin
