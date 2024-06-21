@@ -15,6 +15,7 @@ wallet:
         - host: 85.215.236.130.nip.io
           paths:
             - path: /wallet-api
+              pathType: Prefix
 #      tls:
 #        - hosts:
 #            - 85.215.236.130.nip.io
@@ -100,7 +101,7 @@ wallet:
         - host: 85.215.236.130.nip.io # cambiar por el dominio en el futuro
           paths:
             - path: /
-#              pathType: Prefix
+              pathType: Prefix
 #      tls:
 #        - hosts:
 #            - 85.215.236.130.nip.io
@@ -147,6 +148,7 @@ wallet:
         - host: 85.215.236.130.nip.io
           paths:
             - path: /keycloak
+              pathType: ImplementationSpecific
 #      tls:
 #        - hosts:
 #            - 85.215.236.130.nip.io
@@ -155,7 +157,6 @@ wallet:
     app:
       internalServerPort: 8080
       keycloak:
-        proxyPath: "/keycloak"
         relativePath: "/keycloak/"
         admin: admin
         password: admin
