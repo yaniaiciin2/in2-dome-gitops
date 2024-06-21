@@ -155,7 +155,7 @@ wallet:
     app:
       internalServerPort: 8080
       keycloak:
-        relativePath: /keycloak
+        relativePath: "/keycloak/"
         admin: admin
         password: admin
         existingSecret:
