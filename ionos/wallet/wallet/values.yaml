@@ -30,7 +30,7 @@ wallet:
         domain: 85.215.236.130.nip.io
       authServer:
         external:
-          scheme: https
+          scheme: http
           domain: 85.215.236.130.nip.io
           port: 443
           path: /keycloak/realms/wallet
@@ -38,10 +38,10 @@ wallet:
           scheme: http
           domain: dome-wallet-keycloak
           port: 8080
-          path: /realms/wallet
+          path: /keycloak/realms/wallet
         jwtDecoderPath: /protocol/openid-connect/certs
       ebsiTest:
-        url: http://dome-wallet-keycloak:8080/realms/wallet/protocol/openid-connect/token
+        url: http://dome-wallet-keycloak:8080/keycloak/realms/wallet/protocol/openid-connect/token
         client:
           id: user-registry-client
           secret: fV51P8jFBo8VnFKMMuP3imw3H3i5mNck
