@@ -91,6 +91,11 @@ wallet:
     enabled: true
     # -- overrides the generated name, provides stable service names - this should be avoided if multiple instances are available in the same namespace
     fullnameOverride: dome-wallet-ui
+    image:
+      repository: rubenmodamio7/wallet-ui
+      # Overrides the image tag whose default is the chart appVersion.
+      tag: v1.2.0
+      pullPolicy: Always
     ## ingress specific configuration
     ingress:
       enabled: true
