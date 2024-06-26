@@ -33,7 +33,7 @@ vcverifier:
 
   ingress:
     enabled: true
-    annotations:
+#    annotations:
 #      cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
     className: nginx
     hosts:
