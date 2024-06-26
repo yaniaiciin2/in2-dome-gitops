@@ -34,7 +34,7 @@ vcverifier:
   ingress:
     enabled: true
     annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
+#      cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
     className: nginx
     hosts:
       - host: in2-dome-marketplace-test.org
