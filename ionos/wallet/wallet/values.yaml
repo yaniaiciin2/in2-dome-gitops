@@ -12,13 +12,13 @@ wallet:
 #      annotations:
 #        cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
       hosts:
-        - host: 85.215.236.130.nip.io
+        - host: in2-dome-marketplace-test.org
           paths:
             - path: /wallet-api
               pathType: Prefix
       tls:
         - hosts:
-            - 85.215.236.130.nip.io
+            - in2-dome-marketplace-test.org
           secretName: ingress-nginx-admission
     ## deployment specific configuration
     app:
@@ -27,11 +27,11 @@ wallet:
       basePath: /wallet-api
       walletUi:
         scheme: https
-        domain: 85.215.236.130.nip.io
+        domain: in2-dome-marketplace-test.org
       authServer:
         external:
           scheme: http
-          domain: 85.215.236.130.nip.io
+          domain: in2-dome-marketplace-test.org
           port: 443
           path: /keycloak/realms/wallet
         internal:
@@ -103,22 +103,22 @@ wallet:
 #      annotations:
 #        cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
       hosts:
-        - host: 85.215.236.130.nip.io # cambiar por el dominio en el futuro
+        - host: in2-dome-marketplace-test.org # cambiar por el dominio en el futuro
           paths:
             - path: /
               pathType: Prefix
       tls:
         - hosts:
-            - 85.215.236.130.nip.io
+            - in2-dome-marketplace-test.org
           secretName: ingress-nginx-admission
     ## deployment specific configuration
     app:
       internalServerPort: 8080
       walletApi:
         # Este internalDomain es en realidad el external
-        internalDomain: https://85.215.236.130.nip.io/wallet-api
+        internalDomain: https://in2-dome-marketplace-test.org/wallet-api
         # ws = sin certificado, wss = con certificado
-        websocketExternalDomain: wss://85.215.236.130.nip.io/wallet-api
+        websocketExternalDomain: wss://in2-dome-marketplace-test.org/wallet-api
 #        websocketPath: /api/v1/pin
 #        executeContentPath: /api/v1/execute-content
 #        requestCredentialPath: /api/v1/request-credential
@@ -128,7 +128,7 @@ wallet:
 #        requestSignedCredentialPath: /api/v1/request-signed-credential
 #        cborPath: /api/v1/vp/cbor
       iam:
-        external_domain: https://85.215.236.130.nip.io/keycloak
+        external_domain: https://in2-dome-marketplace-test.org/keycloak
 #        realm_path: /realms/wallet
 
   ## configuration for the dome-wallet-keycloak
@@ -155,13 +155,13 @@ wallet:
 #      annotations:
 #        cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
       hosts:
-        - host: 85.215.236.130.nip.io
+        - host: in2-dome-marketplace-test.org
           paths:
             - path: /keycloak
               pathType: Prefix
       tls:
         - hosts:
-            - 85.215.236.130.nip.io
+            - in2-dome-marketplace-test.org
           secretName: ingress-nginx-admission
     ## deployment specific configuration
     app:
