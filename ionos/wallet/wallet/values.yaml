@@ -168,7 +168,7 @@ wallet:
       internalServerPort: 8080
       keycloak:
         hostnameUrl: "https://in2-dome-marketplace-test.org/keycloak"
-        adminUrl: "https://in2-dome-marketplace-test.org/keycloak/admin"
+        adminUrl: "https://in2-dome-marketplace-test.org/keycloak"
         relativePath: "/keycloak/"
         admin: admin
         password: admin
