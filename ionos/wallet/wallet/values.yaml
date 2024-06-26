@@ -105,7 +105,7 @@ wallet:
       hosts:
         - host: in2-dome-marketplace-test.org # cambiar por el dominio en el futuro
           paths:
-            - path: /
+            - path: /wallet-ui
               pathType: Prefix
       tls:
         - hosts:

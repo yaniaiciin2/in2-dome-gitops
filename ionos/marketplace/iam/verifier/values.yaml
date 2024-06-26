@@ -26,7 +26,7 @@ vcverifier:
             mountPath: /target
 
     server:
-      host: https://in2-dome-marketplace-test.org/verifier
+      host: https://in2-dome-marketplace-test.org
       staticDir: /static
       templateDir: /templates
 
@@ -39,8 +39,7 @@ vcverifier:
     hosts:
       - host: in2-dome-marketplace-test.org
         paths:
-#          - "/"
-          - "/verifier"
+         - "/"
     tls:
       - hosts:
           - in2-dome-marketplace-test.org
