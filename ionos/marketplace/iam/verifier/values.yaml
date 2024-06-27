@@ -11,7 +11,7 @@ vcverifier:
 
     verifier:
       # it must be changed depending the environment
-      certificateFingerprint: B4:51:A0:FD:55:EE:02:E1:BB:E7:A8:8F:9E:F8:9E:49:9E:3A:8F:DC:CA:B8:7E:67:4A:F6:C9:D2:9F:69:41:94
+      certificateFingerprint: E6:0D:93:A5:62:B3:A3:34:24:3A:6E:65:42:77:CD:B6:A9:51:2A:CF:B2:A3:88:9C:8D:91:1A:69:E2:0C:2A:5D
       tirAddress: https://tir.dome-marketplace-sbx.org/v3/issuers
       did: did:web:in2-dome-marketplace-test.org
     configRepo:
