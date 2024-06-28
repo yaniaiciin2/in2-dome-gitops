@@ -7,8 +7,6 @@ issuer:
       mail:
         host: smtp.ionos.de
         port: 587
-        username: digitalidentitysupport@dome-marketplace.eu
-        password: digitalIN2@DOME2023
         existingSecret:
           enabled: true
           name: mail-secret
