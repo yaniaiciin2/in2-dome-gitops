@@ -28,7 +28,7 @@ issuer:
           externalService: true
           scheme: http
           # change by the external url or set to localhost if deployed locally
-          host: example.org
+          host: dome-marketplace-test.org
           # internalPort is only used if externalService is false
           internalPort: 30001
           path: /
@@ -43,7 +43,7 @@ issuer:
           externalService: true
           scheme: http
           # change by the external url or set to localhost if deployed locally
-          host: example.org
+          host: dome-marketplace-test.org
           # internalPort is only used if externalService is false
           internalPort: 30002
           path: /
@@ -67,7 +67,7 @@ issuer:
           externalService: true
           scheme: http
           # change by the external url or set to localhost if deployed locally
-          host: example.org
+          host: dome-marketplace-test.org
           # internalPort is only used if externalService is false
           internalPort: 30000
           path: /
@@ -92,7 +92,7 @@ issuer:
         externalService: true
         scheme: http
         # change by the external url or set to localhost if deployed locally
-        host: example.org
+        host: dome-marketplace-test.org
         # internalPort is only used if externalService is false
         internalPort: 30002
         path: /realms/CredentialIssuer
@@ -104,7 +104,7 @@ issuer:
         externalService: true
         scheme: http
         # change by the external url or set to localhost if deployed locally
-        host: example.org
+        host: dome-marketplace-test.org
         # internalPort is only used if externalService is false
         internalPort: 30001
         path: /
@@ -113,7 +113,7 @@ issuer:
         externalService: true
         scheme: http
         # change by the external url or set to localhost if deployed locally
-        host: example.org
+        host: dome-marketplace-test.org
         # internalPort is only used if externalService is false
         internalPort: 30003
         path: /
@@ -138,7 +138,7 @@ issuer:
           externalService: true
           scheme: http
           # change by the external url or set to localhost if deployed locally
-          host: example.org
+          host: dome-marketplace-test.org
           # internalPort is only used if externalService is false
           internalPort: 30002
           path: /
@@ -147,7 +147,7 @@ issuer:
           externalService: true
           scheme: http
           # change by the external url or set to localhost if deployed locally
-          host: example.org
+          host: dome-marketplace-test.org
           # internalPort is only used if externalService is false
           internalPort: 30002
           path: /
@@ -180,7 +180,7 @@ issuer:
         externalService: true
         scheme: http
         # change by the external url or set to localhost if deployed locally
-        host: example.org
+        host: dome-marketplace-test.org
         # internalPort is only used if externalService is false
         internalPort: 30001
         path: /
