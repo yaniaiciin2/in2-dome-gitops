@@ -4,6 +4,11 @@ wallet:
   wallet-api:
     # -- should be enabled?
     enabled: true
+    image:
+      repository: in2workspace/wallet-api
+      # Overrides the image tag whose default is the chart appVersion.
+      tag: v1.2.0-SNAPSHOT
+      pullPolicy: Always
     # -- overrides the generated name, provides stable service names - this should be avoided if multiple instances are available in the same namespace
     fullnameOverride: wallet-api
     ingress:
