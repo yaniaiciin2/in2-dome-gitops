@@ -35,7 +35,7 @@ wallet:
         domain: in2-dome-marketplace-test.org
       authServer:
         external:
-          scheme: http
+          scheme: https
           domain: in2-dome-marketplace-test.org
           port: 443
           path: /keycloak/realms/wallet
