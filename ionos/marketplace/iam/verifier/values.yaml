@@ -39,7 +39,7 @@ vcverifier:
     hosts:
       - host: in2-dome-marketplace-test.org
         paths:
-         - "/"
+         - "/verifier"
     tls:
       - hosts:
           - in2-dome-marketplace-test.org
