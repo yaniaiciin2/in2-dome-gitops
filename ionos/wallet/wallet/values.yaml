@@ -74,7 +74,7 @@ wallet:
         scheme: http
         port: 8200
         # cambiar por valores dummy
-        token: "hvs.jVMC64mXxnkSZ3GYXRg5JeMb"
+        token: "hvs.4caQFh1oulKOL9N31tGku35r"
         existingSecret:
           # -- should an existing secret be used
           enabled: false
