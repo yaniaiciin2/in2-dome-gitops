@@ -117,7 +117,7 @@ issuer:
         host: in2-dome-marketplace-test.org
         # internalPort is only used if externalService is false
         internalPort: 30002
-        path: issuer-keycloak/realms/CredentialIssuer
+        path: /issuer-keycloak/realms/CredentialIssuer
       clientId: account-console
       scope: openid profile email offline_access
       grantType: code
