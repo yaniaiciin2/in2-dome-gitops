@@ -21,9 +21,9 @@ issuer:
         port: 587
         existingSecret:
           enabled: true
-          name: mail-secret
-          userKey: mail-user
-          passwordKey: mail-password
+          name: issuer-api-mail-secret
+          userKey: username
+          passwordKey: password
         properties:
           mail:
             smtp:
