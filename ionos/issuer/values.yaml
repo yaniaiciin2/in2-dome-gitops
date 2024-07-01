@@ -145,6 +145,10 @@ issuer:
       notification: /api/v1/notifications
 
   dome-issuer-keycloak:
+    readinessProbe:
+      path: /issuer-keycloak/health
+    livenessProbe:
+      path: /issuer-keycloak/health
     ingress:
       enabled: true
       className: nginx
@@ -166,7 +170,7 @@ issuer:
           enabled: false
           name: keycloak-secrets
           passwordKey: keycloakAdminPassword
-      relativePath: "/keycloak/"
+      relativePath: "/issuer-keycloak/"
       hostname:
         url:
           # if deployed locally set to false
