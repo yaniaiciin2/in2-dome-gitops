@@ -1,5 +1,17 @@
 issuer:
   issuer-api:
+    ingress:
+      enabled: true
+      className: nginx
+      hosts:
+        - host: in2-dome-marketplace-test.org
+          paths:
+            - path: /issuer-api
+              pathType: Prefix
+      tls:
+        - hosts:
+            - in2-dome-marketplace-test.org
+          secretName: ingress-nginx-admission
     app:
       profile: default
       logLevel: DEBUG
@@ -24,12 +36,12 @@ issuer:
         externalDomain:
           # if deployed locally set to false
           externalService: true
-          scheme: http
+          scheme: https
           # change by the external url or set to localhost if deployed locally
-          host: dome-marketplace-test.org
+          host: in2-dome-marketplace-test.org
           # internalPort is only used if externalService is false
           internalPort: 30001
-          path: /
+          path: /issuer-api
         internalDomain: http://issuer-api:8080
         configSource: yaml
         cacheLifetimeCredentialOffer: 10
@@ -39,12 +51,12 @@ issuer:
         externalDomain:
           # if deployed locally set to false
           externalService: true
-          scheme: http
+          scheme: https
           # change by the external url or set to localhost if deployed locally
-          host: dome-marketplace-test.org
+          host: in2-dome-marketplace-test.org
           # internalPort is only used if externalService is false
           internalPort: 30002
-          path: /
+          path: /issuer-keycloak
         internalDomain: http://issuer-keycloak:8080
         realm: CredentialIssuer
         client:
@@ -63,9 +75,9 @@ issuer:
         externalDomain:
           # if deployed locally set to false
           externalService: true
-          scheme: http
+          scheme: https
           # change by the external url or set to localhost if deployed locally
-          host: dome-marketplace-test.org
+          host: in2-dome-marketplace-test.org
           # internalPort is only used if externalService is false
           internalPort: 30000
           path: /
@@ -83,44 +95,68 @@ issuer:
         key: db-password
 
   issuer-ui:
+    ingress:
+      enabled: true
+      className: nginx
+      hosts:
+        - host: in2-dome-marketplace-test.org
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - hosts:
+            - in2-dome-marketplace-test.org
+          secretName: ingress-nginx-admission
     app:
       internalServerPort: 8080
       loginUrl:
         # if deployed locally set to false
         externalService: true
-        scheme: http
+        scheme: https
         # change by the external url or set to localhost if deployed locally
-        host: dome-marketplace-test.org
+        host: in2-dome-marketplace-test.org
         # internalPort is only used if externalService is false
         internalPort: 30002
-        path: /realms/CredentialIssuer
+        path: issuer-keycloak/realms/CredentialIssuer
       clientId: account-console
       scope: openid profile email offline_access
       grantType: code
       baseUrl:
         # if deployed locally set to false
         externalService: true
-        scheme: http
+        scheme: https
         # change by the external url or set to localhost if deployed locally
-        host: dome-marketplace-test.org
+        host: in2-dome-marketplace-test.org
         # internalPort is only used if externalService is false
         internalPort: 30001
-        path: /
+        path: /issuer-api
       walletUrl:
         # if deployed locally set to false
         externalService: true
-        scheme: http
+        scheme: https
         # change by the external url or set to localhost if deployed locally
-        host: dome-marketplace-test.org
+        host: in2-dome-marketplace-test.org
         # internalPort is only used if externalService is false
         internalPort: 30003
-        path: /
+        path: /wallet-ui
       procedures: /api/v1/procedures
       saveCredential: /api/v1/credentials?type=LEARCredentialEmployee
       credentialOfferUrl: /api/v1/credential-offer
       notification: /api/v1/notifications
 
   dome-issuer-keycloak:
+    ingress:
+      enabled: true
+      className: nginx
+      hosts:
+        - host: in2-dome-marketplace-test.org
+          paths:
+            - path: /issuer-keycloak
+              pathType: Prefix
+      tls:
+        - hosts:
+            - in2-dome-marketplace-test.org
+          secretName: ingress-nginx-admission
     # Keycloak Configuration
     keycloak:
       admin:
@@ -134,21 +170,21 @@ issuer:
         url:
           # if deployed locally set to false
           externalService: true
-          scheme: http
+          scheme: https
           # change by the external url or set to localhost if deployed locally
-          host: dome-marketplace-test.org
+          host: in2-dome-marketplace-test.org
           # internalPort is only used if externalService is false
           internalPort: 30002
-          path: /
+          path: /issuer-keycloak
         adminUrl:
           # if deployed locally set to false
           externalService: true
-          scheme: http
+          scheme: https
           # change by the external url or set to localhost if deployed locally
-          host: dome-marketplace-test.org
+          host: in2-dome-marketplace-test.org
           # internalPort is only used if externalService is false
           internalPort: 30002
-          path: /
+          path: /issuer-keycloak
       https:
         certificateKeyFile: /opt/keycloak/pem/server.key.pem
         certificateFile: /opt/keycloak/pem/server.crt.pem
@@ -176,12 +212,12 @@ issuer:
       externalUrl:
         # if deployed locally set to false
         externalService: true
-        scheme: http
+        scheme: https
         # change by the external url or set to localhost if deployed locally
-        host: dome-marketplace-test.org
+        host: in2-dome-marketplace-test.org
         # internalPort is only used if externalService is false
         internalPort: 30001
-        path: /
+        path: /issuer-api
 
     # Pre-authorization Configuration
     preAuth:
