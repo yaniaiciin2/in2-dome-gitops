@@ -150,8 +150,6 @@ issuer:
       notification: /api/v1/notifications
 
   dome-issuer-keycloak:
-    app:
-      internalServerPort: 8443
     readinessProbe:
       path: /issuer-keycloak/health
     livenessProbe:
