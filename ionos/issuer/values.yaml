@@ -150,6 +150,8 @@ issuer:
       notification: /api/v1/notifications
 
   dome-issuer-keycloak:
+    app:
+      internalServerPort: 8443
     readinessProbe:
       path: /issuer-keycloak/health
     livenessProbe:
@@ -196,8 +198,8 @@ issuer:
           internalPort: 30002
           path: /issuer-keycloak
       https:
-        certificateKeyFile: /opt/keycloak/pem/server.key.pem
-        certificateFile: /opt/keycloak/pem/server.crt.pem
+        # certificateKeyFile: /opt/keycloak/pem/server.key.pem
+        # certificateFile: /opt/keycloak/pem/server.crt.pem
         trustStoreFile: /opt/keycloak/truststore/truststore.jks
         trustStorePassword: pempas
         existingSecret:
