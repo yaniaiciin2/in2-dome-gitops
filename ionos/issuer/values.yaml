@@ -157,6 +157,9 @@ issuer:
     ingress:
       enabled: true
       className: nginx
+      annotations:
+        #        nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
+        nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
       hosts:
         - host: in2-dome-marketplace-test.org
           paths:
@@ -196,8 +199,8 @@ issuer:
           internalPort: 30002
           path: /issuer-keycloak
       https:
-        certificateKeyFile: ''
-        certificateFile: ''
+        certificateKeyFile: /opt/keycloak/pem/server.key.pem
+        certificateFile: /opt/keycloak/pem/server.crt.pem
         trustStoreFile: /opt/keycloak/truststore/truststore.jks
         trustStorePassword: pempas
         existingSecret:
