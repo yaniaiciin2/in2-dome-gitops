@@ -103,9 +103,6 @@ issuer:
     ingress:
       enabled: true
       className: nginx
-      annotations:
-#        nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
-        nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
       hosts:
         - host: in2-dome-marketplace-test.org
           paths:
@@ -160,6 +157,9 @@ issuer:
     ingress:
       enabled: true
       className: nginx
+      annotations:
+        #        nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
+        nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
       hosts:
         - host: in2-dome-marketplace-test.org
           paths:
