@@ -95,6 +95,11 @@ issuer:
         key: db-password
 
   issuer-ui:
+    image:
+      repository: in2workspace/issuer-ui
+      # Overrides the image tag whose default is the chart appVersion.
+      tag: v1.0.0
+      pullPolicy: Always
     ingress:
       enabled: true
       className: nginx
