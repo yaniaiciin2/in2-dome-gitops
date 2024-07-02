@@ -106,7 +106,7 @@ issuer:
       hosts:
         - host: in2-dome-marketplace-test.org
           paths:
-            - path: /issuer-ui
+            - path: /
               pathType: Prefix
       tls:
         - hosts:
