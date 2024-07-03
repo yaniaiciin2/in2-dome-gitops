@@ -173,6 +173,7 @@ issuer:
     keycloak:
       proxy: passthrough
       logsCertsLevel: TRACE
+      logLevel: ALL
       admin:
         username: admin
         password: admin
