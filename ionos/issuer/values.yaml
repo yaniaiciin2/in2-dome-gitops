@@ -171,6 +171,8 @@ issuer:
           secretName: ingress-nginx-admission
     # Keycloak Configuration
     keycloak:
+      proxy: edge
+      logsCertsLevel: TRACE
       admin:
         username: admin
         password: admin
