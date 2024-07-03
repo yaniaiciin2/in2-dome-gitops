@@ -158,7 +158,7 @@ issuer:
       enabled: true
       className: nginx
       annotations:
-        nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
+        nginx.ingress.kubernetes.io/auth-tls-verify-client: "optional"
         nginx.ingress.kubernetes.io/auth-tls-secret: "ingress-nginx/ingress-nginx-admission"
         nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
       hosts:
