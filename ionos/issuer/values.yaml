@@ -157,9 +157,6 @@ issuer:
     ingress:
       enabled: true
       className: nginx
-      annotations:
-        nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
-        nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
       hosts:
         - host: in2-dome-marketplace-test.org
           paths:
@@ -171,7 +168,7 @@ issuer:
           secretName: ingress-nginx-admission
     # Keycloak Configuration
     keycloak:
-      proxy: passthrough
+      proxy: edge
       logsCertsLevel: TRACE
       logLevel: ALL
       admin:
