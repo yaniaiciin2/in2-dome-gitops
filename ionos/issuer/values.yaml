@@ -160,6 +160,8 @@ issuer:
       notification: /api/v1/notifications
 
   dome-issuer-keycloak:
+    fullnameOverride: dome-issuer-keycloak
+    nameOverride: dome-issuer-keycloak
     readinessProbe:
       path: /issuer-keycloak/health
     livenessProbe:
