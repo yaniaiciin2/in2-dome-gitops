@@ -5,10 +5,10 @@ issuer:
       className: nginx
       annotations:
         nginx.ingress.kubernetes.io/configuration-snippet: |
-          if ($request_uri ~* "in2-dome-marketplace-test.org/issuer-api/token") {
+          if ($request_uri ~* "^/issuer-api/token") {
             return 301 https://in2-dome-marketplace-test.org/issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/token;
           }
-          if ($request_uri ~* "in2-dome-marketplace-test.org/issuer-api/.well-known/openid-configuration") {
+          if ($request_uri ~* "^/issuer-api/.well-known/openid-configuration") {
             return 301 https://in2-dome-marketplace-test.org/issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/.well-known/openid-configuration;
           }
       hosts:
