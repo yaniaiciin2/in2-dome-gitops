@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cert-manager-webhook
+  namespace: cert-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cert-manager
+      component: webhook
+  template:
+    metadata:
+      labels:
+        app: cert-manager
+        component: webhook
+    spec:
+      containers:
+        - name: cert-manager-webhook
+          image: quay.io/jetstack/cert-manager-webhook:v1.8.0
+          ports:
+            - containerPort: 10250
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 10250
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 10250
+            initialDelaySeconds: 5
+            periodSeconds: 10
