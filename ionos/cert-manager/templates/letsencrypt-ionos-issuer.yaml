@@ -5,16 +5,17 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: example@in2.es #TODO: What email address should we use?
+    email: yani.aici@in2.es #TODO: What email address should we use?
     privateKeySecretRef:
       name: letsencrypt-prod
     solvers:
     - dns01:
         webhook:
-          groupName: example.com  # TODO: We need to change this to our domain
           solverName: ionos
+          groupName: acme.fabmade.de
           config:
             apiTokenSecretRef:
               name: ionos-credentials
               key: api-key
-            endpoint: example.com
+            endpoint: https://dns.de-fra.ionos.com
+ 

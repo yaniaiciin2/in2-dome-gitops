@@ -7,7 +7,7 @@ image:
 namespace: default
 # zone to which the external-DNS should be restricted
 zoneNameFilters:
-  - dome-marketplace-sbx.org
+  - in2-dome-marketplace-test.org
 provider: webhook
 
 extraArgs:

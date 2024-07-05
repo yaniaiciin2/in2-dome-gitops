@@ -1,13 +1,10 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: example-com-tls
-  namespace: cert-manager
+  name: example-test-com
 spec:
-  secretName: example-com-tls
-  issuerRef:
-    name: letsencrypt-ionos
-    kind: ClusterIssuer
   dnsNames:
-  - in2-dome-marketplace-test.org
- 
+    - 'in2-dome-marketplace-test.org'
+  issuerRef:
+    name: letsencrypt-ionos-staging
+  secretName: example-com-tls
