@@ -3,6 +3,6 @@ dome-dss:
     internalServerPort: 8080
 
   authServer:
-    internalDomain: "http://localhost:8081"
-    externalDomain: "http://localhost:8081"
+    internalDomain: "http://dome-issuer-keycloak:8080/issuer-keycloak"
+    externalDomain: "https://in2-dome-marketplace-test.org/issuer-keycloak"
     realm: CredentialIssuer
