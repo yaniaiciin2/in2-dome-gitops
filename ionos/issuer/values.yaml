@@ -2,17 +2,41 @@ issuer:
   issuer-api:
     fullnameOverride: issuer-api
     nameOverride: issuer-api
-    ingress:
+    ingressWellKnown:
       enabled: true
       className: nginx
       annotations:
-        nginx.ingress.kubernetes.io/configuration-snippet: |
-          if ($request_uri ~* "^/issuer-api/token") {
-            return 301 https://in2-dome-marketplace-test.org/issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/token;
-          }
-          if ($request_uri ~* "^/issuer-api/.well-known/openid-configuration") {
-            return 301 https://in2-dome-marketplace-test.org/issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/.well-known/openid-configuration;
-          }
+        nginx.ingress.kubernetes.io/rewrite-target: /issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/.well-known/openid-configuration
+      hosts:
+        - host: in2-dome-marketplace-test.org
+          paths:
+            - path: /issuer-api/.well-known/openid-configuration
+              pathType: Prefix
+              serviceName: dome-issuer-keycloak
+              servicePort: 8080
+      tls:
+        - hosts:
+            - in2-dome-marketplace-test.org
+          secretName: ingress-nginx-admission
+    ingressToken:
+      enabled: true
+      className: nginx
+      annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/token
+      hosts:
+        - host: in2-dome-marketplace-test.org
+          paths:
+            - path: /issuer-api/token
+              pathType: Prefix
+              serviceName: dome-issuer-keycloak
+              servicePort: 8080
+      tls:
+        - hosts:
+            - in2-dome-marketplace-test.orgt
+          secretName: ingress-nginx-admission
+    ingress:
+      enabled: true
+      className: nginx
       hosts:
         - host: in2-dome-marketplace-test.org
           paths:
