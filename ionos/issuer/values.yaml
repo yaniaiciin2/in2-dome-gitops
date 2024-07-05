@@ -1,5 +1,7 @@
 issuer:
   issuer-api:
+    fullnameOverride: issuer-api
+    nameOverride: issuer-api
     ingress:
       enabled: true
       className: nginx
@@ -113,6 +115,8 @@ issuer:
         key: db-password
 
   issuer-ui:
+    fullnameOverride: issuer-ui
+    nameOverride: issuer-ui
     image:
       repository: in2workspace/issuer-ui
       # Overrides the image tag whose default is the chart appVersion.
