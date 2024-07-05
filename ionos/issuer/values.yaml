@@ -325,9 +325,9 @@ issuer:
     # -- should the postgresql deployment be enabled
     enabled: true
     # -- overrides the generated name, provides stable service names - this should be avoided if multiple instances are available in the same namespace
-    fullnameOverride: issuer-keycloak-postgres
+    fullnameOverride: dome-issuer-keycloak-postgres
     # -- overrides the generated name, provides stable service names - this should be avoided if multiple instances are available in the same namespace
-    nameOverride: issuer-keycloak-postgres
+    nameOverride: dome-issuer-keycloak-postgres
     ## auth configuration for the database
     auth:
       # -- username to be used
