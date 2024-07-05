@@ -17,18 +17,57 @@ spec:
     spec:
       containers:
         - name: cert-manager-webhook
-          image: quay.io/jetstack/cert-manager-webhook:v1.8.0
+          image: quay.io/jetstack/cert-manager-webhook:v1.10.1
           ports:
             - containerPort: 10250
+              name: https
+              protocol: TCP
+            - containerPort: 6080
+              name: healthcheck
+              protocol: TCP
           livenessProbe:
             httpGet:
-              path: /healthz
-              port: 10250
-            initialDelaySeconds: 5
+              path: /livez
+              port: 6080
+              scheme: HTTP
+            initialDelaySeconds: 60
             periodSeconds: 10
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /healthz
-              port: 10250
+              port: 6080
+              scheme: HTTP
             initialDelaySeconds: 5
-            periodSeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 3
+          args:
+            - --v=2
+            - --secure-port=10250
+            - --dynamic-serving-ca-secret-namespace=$(POD_NAMESPACE)
+            - --dynamic-serving-ca-secret-name=cert-manager-webhook-ca
+            - --dynamic-serving-dns-names=cert-manager-webhook
+            - --dynamic-serving-dns-names=cert-manager-webhook.$(POD_NAMESPACE)
+            - --dynamic-serving-dns-names=cert-manager-webhook.$(POD_NAMESPACE).svc
+          env:
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      nodeSelector:
+        kubernetes.io/os: linux
+      serviceAccountName: cert-manager-webhook
