@@ -1,9 +1,4 @@
 dome-dss:
-  readinessProbe:
-    path: /health
-  livenessProbe:
-    path: /health
-
   app:
     internalServerPort: 8050
 
