@@ -46,10 +46,10 @@ issuer:
           externalService: true
           scheme: http
           # change by the external url or set to localhost if deployed locally
-          host: example.org
+          host: dome-dss:8080
           # internalPort is only used if externalService is false
           internalPort: 30003
-        internalDomain: http://dss:8050
+        internalDomain: http://dome-dss:8080
       api:
         externalDomain:
           # if deployed locally set to false
