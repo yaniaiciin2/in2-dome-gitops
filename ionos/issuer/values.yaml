@@ -11,6 +11,8 @@ issuer:
           if ($request_uri ~* "^/issuer-api/.well-known/openid-configuration") {
             return 301 https://in2-dome-marketplace-test.org/issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/.well-known/openid-configuration;
           }
+          cert-manager.io/cluster-issuer: letsencrypt-issuer
+          acme.cert-manager.io/http01-edit-in-place: "true"
       hosts:
         - host: in2-dome-marketplace-test.org
           paths:
