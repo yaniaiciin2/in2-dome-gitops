@@ -9,6 +9,8 @@ issuer:
         nginx.ingress.kubernetes.io/rewrite-target: /issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/.well-known/openid-configuration
         cert-manager.io/cluster-issuer: letsencrypt-ionos
         acme.cert-manager.io/http01-edit-in-place: "true"
+        cert-manager.io/acme-challenge-type: http01
+        cert-manager.io/http01-ingress-class: nginx
       hosts:
         - host: in2-dome-marketplace-test.org
           paths:
