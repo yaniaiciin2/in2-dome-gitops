@@ -14,8 +14,8 @@ wallet:
     ingress:
       enabled: true
       className: nginx
-#      annotations:
-#        cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
+      cert-manager.io/cluster-issuer: letsencrypt-issuer
+      acme.cert-manager.io/http01-edit-in-place: "true"
       hosts:
         - host: in2-dome-marketplace-test.org
           paths:

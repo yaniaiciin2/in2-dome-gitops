@@ -1,0 +1,12 @@
+replicaCount: 1
+
+image:
+  repository: quay.io/jetstack/cert-manager-webhook
+  tag: v1.8.0
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 443
+
+resources: {}

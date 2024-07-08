@@ -6,6 +6,10 @@ ingress-nginx:
     service:
       annotations:
         cloud.ionos.com/node-selector: nodepool=ingress
+        cert-manager.io/cluster-issuer: letsencrypt-ionos
+    ingress:
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-ionos
     kind: DaemonSet
     config:
       large-client-header-buffers: "8 32k"
