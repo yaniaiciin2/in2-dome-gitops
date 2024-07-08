@@ -9,13 +9,10 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-prod
     solvers:
-    - dns01:
-        webhook:
-          solverName: ionos
-          groupName: acme.fabmade.de
-          config:
-            apiTokenSecretRef:
-              name: ionos-credentials
-              key: api-key
-            endpoint: https://dns.de-fra.ionos.com
+    - selector:
+        dnsZones:
+          - "in2-dome-marketplace-test.org" 
+      http01:
+        ingress:
+          ingressClassName: nginx
  
