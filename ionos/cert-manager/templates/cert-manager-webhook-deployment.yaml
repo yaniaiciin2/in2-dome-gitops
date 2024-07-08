@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cert-manager-webhook
-  namespace: cert-manager
+  namespace: in2
 spec:
   replicas: 1
   selector:
