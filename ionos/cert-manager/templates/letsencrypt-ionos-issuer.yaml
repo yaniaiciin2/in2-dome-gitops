@@ -5,7 +5,7 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: yani.aici@in2.es #TODO: What email address should we use?
+    email: domesupport@in2.es
     privateKeySecretRef:
       name: letsencrypt-prod
     solvers:
