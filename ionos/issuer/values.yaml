@@ -1,6 +1,8 @@
 issuer:
   issuer-api:
-    ingress:
+    fullnameOverride: issuer-api
+    nameOverride: issuer-api
+    ingressWellKnown:
       enabled: true
       className: nginx
       annotations:
@@ -11,8 +13,39 @@ issuer:
           if ($request_uri ~* "^/issuer-api/.well-known/openid-configuration") {
             return 301 https://in2-dome-marketplace-test.org/issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/.well-known/openid-configuration;
           }
-          cert-manager.io/cluster-issuer: letsencrypt-issuer
-          acme.cert-manager.io/http01-edit-in-place: "true"
+        cert-manager.io/cluster-issuer: letsencrypt-issuer
+        acme.cert-manager.io/http01-edit-in-place: "true"
+        nginx.ingress.kubernetes.io/rewrite-target: /issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/.well-known/openid-configuration
+      hosts:
+        - host: in2-dome-marketplace-test.org
+          paths:
+            - path: /issuer-api/.well-known/openid-configuration
+              pathType: Prefix
+              serviceName: dome-issuer-keycloak
+              servicePort: 8080
+      tls:
+        - hosts:
+            - in2-dome-marketplace-test.org
+          secretName: ingress-nginx-admission
+    ingressToken:
+      enabled: true
+      className: nginx
+      annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/token
+      hosts:
+        - host: in2-dome-marketplace-test.org
+          paths:
+            - path: /issuer-api/token
+              pathType: Prefix
+              serviceName: dome-issuer-keycloak
+              servicePort: 8080
+      tls:
+        - hosts:
+            - in2-dome-marketplace-test.orgt
+          secretName: ingress-nginx-admission
+    ingress:
+      enabled: true
+      className: nginx
       hosts:
         - host: in2-dome-marketplace-test.org
           paths:
@@ -48,10 +81,10 @@ issuer:
           externalService: true
           scheme: http
           # change by the external url or set to localhost if deployed locally
-          host: example.org
+          host: dome-dss:8080
           # internalPort is only used if externalService is false
           internalPort: 30003
-        internalDomain: http://dss:8050
+        internalDomain: http://dome-dss:8080
       api:
         externalDomain:
           # if deployed locally set to false
@@ -77,7 +110,7 @@ issuer:
           # internalPort is only used if externalService is false
           internalPort: 30002
           path: /issuer-keycloak
-        internalDomain: http://dome-issuer-keycloak.in2.svc.cluster.local:8080/issuer-keycloak
+        internalDomain: http://dome-issuer-keycloak:8080/issuer-keycloak
         realm: CredentialIssuer
         client:
           clientId: oidc4vci-wallet-client
@@ -115,6 +148,8 @@ issuer:
         key: db-password
 
   issuer-ui:
+    fullnameOverride: issuer-ui
+    nameOverride: issuer-ui
     image:
       repository: in2workspace/issuer-ui
       # Overrides the image tag whose default is the chart appVersion.
@@ -231,10 +266,11 @@ issuer:
           trustStorePasswordKey: keycloakTrustStorePassword
         clientAuth: request
       db:
-        type: postgres
-        username: postgres
-        url: jdbc:postgresql://issuer-keycloak-postgres/cred
+        host: dome-issuer-keycloak-postgres
         port: 5432
+        externalService: false
+        name: cred
+        username: postgres
         password: postgres
         existingSecret:
           enabled: false
@@ -298,9 +334,9 @@ issuer:
     # -- should the postgresql deployment be enabled
     enabled: true
     # -- overrides the generated name, provides stable service names - this should be avoided if multiple instances are available in the same namespace
-    fullnameOverride: issuer-keycloak-postgres
+    fullnameOverride: dome-issuer-keycloak-postgres
     # -- overrides the generated name, provides stable service names - this should be avoided if multiple instances are available in the same namespace
-    nameOverride: issuer-keycloak-postgres
+    nameOverride: dome-issuer-keycloak-postgres
     ## auth configuration for the database
     auth:
       # -- username to be used
