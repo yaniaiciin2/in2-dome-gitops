@@ -1,2 +1,8 @@
 cert-manager:
   installCRDs: true
+
+dome:
+  env: sbx
+  dnsName: in2-dome-marketplace-test.org
+  maintainer:
+    email: domesupport@in2.es
