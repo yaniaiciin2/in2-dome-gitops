@@ -42,6 +42,8 @@ issuer:
     ingress:
       enabled: true
       className: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-ionos
       hosts:
         - host: in2-dome-marketplace-test.org
           paths:
@@ -153,6 +155,8 @@ issuer:
       pullPolicy: Always
     ingress:
       enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-ionos
       className: nginx
       hosts:
         - host: in2-dome-marketplace-test.org
