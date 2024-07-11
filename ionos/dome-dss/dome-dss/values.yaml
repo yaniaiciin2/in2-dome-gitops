@@ -18,7 +18,7 @@ dome-dss:
         key: password
     vault:
       provider: hashicorp
-      host: vault-server
+      host: dome-dss-vault-server
       scheme: http
       port: 8200
       token: defaultToken
