@@ -1,8 +1,0 @@
-dome-dss:
-  app:
-    internalServerPort: 8050
-
-  authServer:
-    internalDomain: "http://dome-issuer-keycloak:8080/issuer-keycloak"
-    externalDomain: "https://in2-dome-marketplace-test.org/issuer-keycloak"
-    realm: CredentialIssuer
