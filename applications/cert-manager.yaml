@@ -13,7 +13,7 @@ spec:
     path: ionos/cert-manager
   destination:
     server: https://kubernetes.default.svc
-    namespace: in2
+    namespace: cert-manager
   syncPolicy:
     automated:
       prune: true

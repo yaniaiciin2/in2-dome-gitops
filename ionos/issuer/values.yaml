@@ -8,9 +8,6 @@ issuer:
       annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/.well-known/openid-configuration
         cert-manager.io/cluster-issuer: letsencrypt-ionos
-        acme.cert-manager.io/http01-edit-in-place: "true"
-        cert-manager.io/acme-challenge-type: http01
-        cert-manager.io/http01-ingress-class: nginx
       hosts:
         - host: in2-dome-marketplace-test.org
           paths:
@@ -22,11 +19,12 @@ issuer:
       tls:
         - hosts:
             - in2-dome-marketplace-test.org
-          secretName: ingress-nginx-admission
+          secretName: in2-dev-tls
     ingressToken:
       enabled: true
       className: nginx
       annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-ionos
         nginx.ingress.kubernetes.io/rewrite-target: /issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/token
       hosts:
         - host: in2-dome-marketplace-test.org
@@ -38,7 +36,7 @@ issuer:
       tls:
         - hosts:
             - in2-dome-marketplace-test.orgt
-          secretName: ingress-nginx-admission
+          secretName: in2-dev-tls
     ingress:
       enabled: true
       className: nginx
@@ -52,7 +50,7 @@ issuer:
       tls:
         - hosts:
             - in2-dome-marketplace-test.org
-          secretName: ingress-nginx-admission
+          secretName: in2-dev-tls
     app:
       profile: default
       logLevel: INFO
@@ -166,7 +164,7 @@ issuer:
       tls:
         - hosts:
             - in2-dome-marketplace-test.org
-          secretName: ingress-nginx-admission
+          secretName: in2-dev-tls
     app:
       internalServerPort: 8080
       loginUrl:
@@ -222,7 +220,7 @@ issuer:
       tls:
         - hosts:
             - in2-dome-marketplace-test.org
-          secretName: ingress-nginx-admission
+          secretName: in2-dev-tls
     # Keycloak Configuration
     keycloak:
       proxy: edge
