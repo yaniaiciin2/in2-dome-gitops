@@ -1,0 +1,5 @@
+dome:
+  env: sbx
+  dnsName: in2-dome-marketplace-test.org
+  maintainer:
+    email: albert.rodriguez@in2.es
