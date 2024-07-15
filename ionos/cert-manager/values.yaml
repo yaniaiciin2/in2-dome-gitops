@@ -1,7 +1,0 @@
-cert-manager:
-  installCRDs: true
-
-dome:
-  dnsName: in2-dome-marketplace-test.org
-  maintainer:
-    email: domesupport@in2.es
