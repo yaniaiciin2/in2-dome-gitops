@@ -7,7 +7,7 @@ issuer:
       className: nginx
       annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/.well-known/openid-configuration
-        cert-manager.io/cluster-issuer: letsencrypt-ionos
+        cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
       hosts:
         - host: in2-dome-marketplace-test.org
           paths:
@@ -24,7 +24,7 @@ issuer:
       enabled: true
       className: nginx
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-ionos
+        cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
         nginx.ingress.kubernetes.io/rewrite-target: /issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/token
       hosts:
         - host: in2-dome-marketplace-test.org
@@ -41,7 +41,7 @@ issuer:
       enabled: true
       className: nginx
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-ionos
+        cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
       hosts:
         - host: in2-dome-marketplace-test.org
           paths:
