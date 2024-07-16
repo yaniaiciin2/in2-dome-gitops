@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: http://argocd.in2-dome-marketplace-test.org/
+    - host: argocd.in2-dome-marketplace-test.org
       http:
         paths:
           - path: /
