@@ -20,7 +20,7 @@ issuer:
       tls:
         - hosts:
             - issuer.in2-dome-marketplace-test.org
-          secretName: in2-dev-tls
+          secretName: issuer-tls-secret
     ingressWellKnown:
       enabled: true
       className: nginx
@@ -38,7 +38,7 @@ issuer:
       tls:
         - hosts:
             - issuer.in2-dome-marketplace-test.org
-          secretName: in2-dev-tls
+          secretName: issuer-tls-secret
     ingressToken:
       enabled: true
       className: nginx
@@ -55,7 +55,7 @@ issuer:
       tls:
         - hosts:
             - issuer.in2-dome-marketplace-test.org
-          secretName: in2-dev-tls
+          secretName: issuer-tls-secret
     app:
       profile: default
       logLevel: INFO
@@ -169,7 +169,7 @@ issuer:
       tls:
         - hosts:
             - issuer.in2-dome-marketplace-test.org
-          secretName: in2-dev-tls
+          secretName: issuer-tls-secret
     app:
       internalServerPort: 8080
       loginUrl:
@@ -232,7 +232,7 @@ issuer:
       tls:
         - hosts:
             - issuer.in2-dome-marketplace-test.org
-          secretName: in2-dev-tls
+          secretName: issuer-tls-secret
     # Keycloak Configuration
     keycloak:
       proxy: edge
