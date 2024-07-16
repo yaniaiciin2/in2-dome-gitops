@@ -9,7 +9,7 @@ issuer:
         nginx.ingress.kubernetes.io/rewrite-target: /issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/.well-known/openid-configuration
         cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
       hosts:
-        - host: issuer.in2-dome-marketplace-test.org
+        - host: in2-dome-marketplace-test.org
           paths:
             - path: /issuer-api/.well-known/openid-configuration
               pathType: Prefix
@@ -18,7 +18,7 @@ issuer:
 
       tls:
         - hosts:
-            - issuer.in2-dome-marketplace-test.org
+            - in2-dome-marketplace-test.org
           secretName: in2-dev-tls
     ingressToken:
       enabled: true
@@ -27,7 +27,7 @@ issuer:
         cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
         nginx.ingress.kubernetes.io/rewrite-target: /issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/token
       hosts:
-        - host: issuer.in2-dome-marketplace-test.org
+        - host: in2-dome-marketplace-test.org
           paths:
             - path: /issuer-api/token
               pathType: Prefix
@@ -35,7 +35,7 @@ issuer:
               servicePort: 8080
       tls:
         - hosts:
-            - issuer.in2-dome-marketplace-test.org
+            - in2-dome-marketplace-test.org
           secretName: in2-dev-tls
     ingress:
       enabled: true
@@ -43,13 +43,13 @@ issuer:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
       hosts:
-        - host: issuer.in2-dome-marketplace-test.org
+        - host: in2-dome-marketplace-test.org
           paths:
             - path: /issuer-api
               pathType: Prefix
       tls:
         - hosts:
-            - issuer.in2-dome-marketplace-test.org
+            - in2-dome-marketplace-test.org
           secretName: in2-dev-tls
     app:
       profile: default
@@ -87,7 +87,7 @@ issuer:
           externalService: true
           scheme: https
           # change by the external url or set to localhost if deployed locally
-          host: issuer.in2-dome-marketplace-test.org
+          host: in2-dome-marketplace-test.org
           # internalPort is only used if externalService is false
           internalPort: 30001
           path: /issuer-api
@@ -102,7 +102,7 @@ issuer:
           externalService: true
           scheme: https
           # change by the external url or set to localhost if deployed locally
-          host: issuer.in2-dome-marketplace-test.org
+          host: in2-dome-marketplace-test.org
           # internalPort is only used if externalService is false
           internalPort: 30002
           path: /issuer-keycloak
@@ -126,7 +126,7 @@ issuer:
           externalService: true
           scheme: https
           # change by the external url or set to localhost if deployed locally
-          host: issuer.in2-dome-marketplace-test.org
+          host: in2-dome-marketplace-test.org
           # internalPort is only used if externalService is false
           internalPort: 30000
           path: /
@@ -157,13 +157,13 @@ issuer:
         cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
       className: nginx
       hosts:
-        - host: issuer.in2-dome-marketplace-test.org
+        - host: in2-dome-marketplace-test.org
           paths:
             - path: /
               pathType: Prefix
       tls:
         - hosts:
-            - issuer.in2-dome-marketplace-test.org
+            - in2-dome-marketplace-test.org
           secretName: in2-dev-tls
     app:
       internalServerPort: 8080
@@ -172,7 +172,7 @@ issuer:
         externalService: true
         scheme: https
         # change by the external url or set to localhost if deployed locally
-        host: issuer.in2-dome-marketplace-test.org
+        host: in2-dome-marketplace-test.org
         # internalPort is only used if externalService is false
         internalPort: 30002
         path: /issuer-keycloak/realms/CredentialIssuer
@@ -184,7 +184,7 @@ issuer:
         externalService: true
         scheme: https
         # change by the external url or set to localhost if deployed locally
-        host: issuer.in2-dome-marketplace-test.org
+        host: in2-dome-marketplace-test.org
         # internalPort is only used if externalService is false
         internalPort: 30001
         path: /issuer-api
@@ -213,13 +213,13 @@ issuer:
       enabled: true
       className: nginx
       hosts:
-        - host: issuer.in2-dome-marketplace-test.org
+        - host: in2-dome-marketplace-test.org
           paths:
             - path: /issuer-keycloak
               pathType: Prefix
       tls:
         - hosts:
-            - issuer.in2-dome-marketplace-test.org
+            - in2-dome-marketplace-test.org
           secretName: in2-dev-tls
     # Keycloak Configuration
     keycloak:
@@ -240,7 +240,7 @@ issuer:
           externalService: true
           scheme: https
           # change by the external url or set to localhost if deployed locally
-          host: issuer.in2-dome-marketplace-test.org
+          host: in2-dome-marketplace-test.org
           # internalPort is only used if externalService is false
           internalPort: 30002
           path: /issuer-keycloak
@@ -249,7 +249,7 @@ issuer:
           externalService: true
           scheme: https
           # change by the external url or set to localhost if deployed locally
-          host: issuer.in2-dome-marketplace-test.org
+          host: in2-dome-marketplace-test.org
           # internalPort is only used if externalService is false
           internalPort: 30002
           path: /issuer-keycloak
@@ -283,7 +283,7 @@ issuer:
         externalService: true
         scheme: https
         # change by the external url or set to localhost if deployed locally
-        host: issuer.in2-dome-marketplace-test.org
+        host: in2-dome-marketplace-test.org
         # internalPort is only used if externalService is false
         internalPort: 30001
         path: /issuer-api
