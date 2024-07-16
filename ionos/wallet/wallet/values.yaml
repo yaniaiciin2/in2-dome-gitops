@@ -4,18 +4,13 @@ wallet:
   wallet-api:
     # -- should be enabled?
     enabled: true
-    image:
-      repository: in2workspace/wallet-api
-      # Overrides the image tag whose default is the chart appVersion.
-      tag: v1.2.0-SNAPSHOT
-      pullPolicy: Always
     # -- overrides the generated name, provides stable service names - this should be avoided if multiple instances are available in the same namespace
     fullnameOverride: wallet-api
     ingress:
       enabled: true
       className: nginx
-      cert-manager.io/cluster-issuer: letsencrypt-ionos
-      acme.cert-manager.io/http01-edit-in-place: "true"
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
       hosts:
         - host: in2-dome-marketplace-test.org
           paths:
@@ -24,7 +19,7 @@ wallet:
       tls:
         - hosts:
             - in2-dome-marketplace-test.org
-          secretName: ingress-nginx-admission
+          secretName: in2-dev-tls
     ## deployment specific configuration
     app:
       internalServerPort: 8080
@@ -74,7 +69,7 @@ wallet:
         scheme: http
         port: 8200
         # cambiar por valores dummy
-        token: "hvs.4caQFh1oulKOL9N31tGku35r"
+        token: "hvs.klVKZA6yFWV9mZe892uXEE3U"
         existingSecret:
           # -- should an existing secret be used
           enabled: false
@@ -96,26 +91,21 @@ wallet:
     enabled: true
     # -- overrides the generated name, provides stable service names - this should be avoided if multiple instances are available in the same namespace
     fullnameOverride: dome-wallet-ui
-    image:
-      repository: rubenmodamio7/wallet-ui
-      # Overrides the image tag whose default is the chart appVersion.
-      tag: v1.2.0
-      pullPolicy: Always
     ## ingress specific configuration
     ingress:
       enabled: true
       className: nginx
-#      annotations:
-#        cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
       hosts:
-        - host: in2-dome-marketplace-test.org # cambiar por el dominio en el futuro
+        - host: in2-dome-marketplace-test.org
           paths:
-            - path: /wallet-ui
+            - path: /
               pathType: Prefix
       tls:
         - hosts:
             - in2-dome-marketplace-test.org
-          secretName: ingress-nginx-admission
+          secretName: in2-dev-tls
     ## deployment specific configuration
     app:
       internalServerPort: 8080
@@ -141,12 +131,7 @@ wallet:
     # -- should be enabled?
     enabled: true
     # -- overrides the generated name, provides stable service names - this should be avoided if multiple instances are available in the same namespace
-    fullnameOverride: dome-wallet-keycloak
-    image:
-      repository: in2workspace/dome-wallet-keycloak
-      # Overrides the image tag whose default is the chart appVersion.
-      tag: v1.0.0-SNAPSHOT
-      pullPolicy: Always
+    fullnameOverride: dome-wallet-keycloak    
     # -- Added because the rollout is not working
     readinessProbe:
       path: /keycloak/health
@@ -157,8 +142,8 @@ wallet:
     ingress:
       enabled: true
       className: nginx
-#      annotations:
-#        cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
       hosts:
         - host: in2-dome-marketplace-test.org
           paths:
@@ -167,7 +152,7 @@ wallet:
       tls:
         - hosts:
             - in2-dome-marketplace-test.org
-          secretName: ingress-nginx-admission
+          secretName: in2-dev-tls
     ## deployment specific configuration
     app:
       internalServerPort: 8080
