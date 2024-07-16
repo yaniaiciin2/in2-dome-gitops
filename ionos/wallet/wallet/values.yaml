@@ -19,7 +19,7 @@ wallet:
       tls:
         - hosts:
             - in2-dome-marketplace-test.org
-          secretName: in2-dev-tls
+          secretName: in2-wallet-dev-tls
     ## deployment specific configuration
     app:
       internalServerPort: 8080
@@ -105,7 +105,7 @@ wallet:
       tls:
         - hosts:
             - in2-dome-marketplace-test.org
-          secretName: in2-dev-tls
+          secretName: in2-wallet-dev-tls
     ## deployment specific configuration
     app:
       internalServerPort: 8080
@@ -152,7 +152,7 @@ wallet:
       tls:
         - hosts:
             - in2-dome-marketplace-test.org
-          secretName: in2-dev-tls
+          secretName: in2-wallet-dev-tls
     ## deployment specific configuration
     app:
       internalServerPort: 8080
