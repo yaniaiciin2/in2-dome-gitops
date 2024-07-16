@@ -158,9 +158,9 @@ issuer:
       pullPolicy: Always
     ingress:
       enabled: true
+      className: nginx
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
-      className: nginx
       hosts:
         - host: issuer.in2-dome-marketplace-test.org
           paths:
