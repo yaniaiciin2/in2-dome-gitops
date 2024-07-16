@@ -9,7 +9,7 @@ issuer:
         nginx.ingress.kubernetes.io/rewrite-target: /issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/.well-known/openid-configuration
         cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
       hosts:
-        - host: issuer.in2-dome-marketplace-test.org
+        - host: in2-dome-marketplace-test.org
           paths:
             - path: /issuer-api/.well-known/openid-configuration
               pathType: Prefix
@@ -27,7 +27,7 @@ issuer:
         cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
         nginx.ingress.kubernetes.io/rewrite-target: /issuer-keycloak/realms/CredentialIssuer/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/token
       hosts:
-        - host: issuer.in2-dome-marketplace-test.org
+        - host: in2-dome-marketplace-test.org
           paths:
             - path: /issuer-api/token
               pathType: Prefix
@@ -35,7 +35,7 @@ issuer:
               servicePort: 8080
       tls:
         - hosts:
-            - in2-dome-marketplace-test.orgt
+            - in2-dome-marketplace-test.org
           secretName: in2-dev-tls
     ingress:
       enabled: true
@@ -43,7 +43,7 @@ issuer:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
       hosts:
-        - host: issuer.in2-dome-marketplace-test.org
+        - host: in2-dome-marketplace-test.org
           paths:
             - path: /issuer-api
               pathType: Prefix
@@ -163,7 +163,7 @@ issuer:
               pathType: Prefix
       tls:
         - hosts:
-            - issuer.in2-dome-marketplace-test.org
+            - in2-dome-marketplace-test.org
           secretName: in2-dev-tls
     app:
       internalServerPort: 8080
