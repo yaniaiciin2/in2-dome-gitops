@@ -1,9 +1,4 @@
 dome-dss:
-  image:
-    repository: in2workspace/remote-signature-ms
-    # Overrides the image tag whose default is the chart appVersion.
-    tag: v0.6.0
-    pullPolicy: Always
   app:
     internalServerPort: 8050
     config:
@@ -32,5 +27,5 @@ dome-dss:
 
   authServer:
     internalDomain: "http://dome-issuer-keycloak:8080/issuer-keycloak"
-    externalDomain: "https://in2-dome-marketplace-test.org/issuer-keycloak"
+    externalDomain: "https://issuer.in2-dome-marketplace-test.org/issuer-keycloak"
     realm: CredentialIssuer
