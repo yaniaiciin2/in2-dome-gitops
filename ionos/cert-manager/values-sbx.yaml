@@ -1,5 +1,5 @@
 dome:
-  env: sbx
+  env: in2-test
   dnsName: in2-dome-marketplace-test.org
   maintainer:
     email: domesupport@in2.es

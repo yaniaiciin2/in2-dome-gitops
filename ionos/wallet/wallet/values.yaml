@@ -10,7 +10,7 @@ wallet:
       enabled: true
       className: nginx
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
+        cert-manager.io/cluster-issuer: letsencrypt-in2-test-issuer
       hosts:
         - host: wallet.in2-dome-marketplace-test.org
           paths:
@@ -96,7 +96,7 @@ wallet:
       enabled: true
       className: nginx
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
+        cert-manager.io/cluster-issuer: letsencrypt-in2-test-issuer
       hosts:
         - host: wallet.in2-dome-marketplace-test.org
           paths:
@@ -143,7 +143,7 @@ wallet:
       enabled: true
       className: nginx
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
+        cert-manager.io/cluster-issuer: letsencrypt-in2-test-issuer
       hosts:
         - host: wallet.in2-dome-marketplace-test.org
           paths:
