@@ -157,7 +157,7 @@ issuer:
         cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
       className: nginx
       hosts:
-        - host: issuer.in2-dome-marketplace-test.org
+        - host: in2-dome-marketplace-test.org
           paths:
             - path: /
               pathType: Prefix
