@@ -205,6 +205,11 @@ issuer:
   dome-issuer-keycloak:
     fullnameOverride: dome-issuer-keycloak
     nameOverride: dome-issuer-keycloak
+    image:
+      repository: in2workspace/dome-issuer-keycloak
+      pullPolicy: Always
+      # Overrides the image tag whose default is the chart appVersion.
+      tag: v1.0.0
     readinessProbe:
       path: /issuer-keycloak/health
     livenessProbe:
@@ -212,6 +217,8 @@ issuer:
     ingress:
       enabled: true
       className: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
       hosts:
         - host: issuer.in2-dome-marketplace-test.org
           paths:
@@ -277,7 +284,7 @@ issuer:
 
     # Issuer API Configuration
     issuerApi:
-      url: http://issuer-api:8080
+      url: http://issuer-api:8080/issuer-api
       externalUrl:
         # if deployed locally set to false
         externalService: true
@@ -300,7 +307,7 @@ issuer:
 
     # Token Configuration
     token:
-      expiration: 2592000
+      expiration: "2592000"
 
   issuer-postgres:
     # -- should the postgresql deployment be enabled
