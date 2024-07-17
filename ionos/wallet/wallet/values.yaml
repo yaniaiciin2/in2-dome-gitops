@@ -12,13 +12,13 @@ wallet:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-in2-test-issuer
       hosts:
-        - host: wallet.dome-marketplace-lcl.org.org
+        - host: wallet.dome-marketplace-lcl.org
           paths:
             - path: /wallet-api
               pathType: Prefix
       tls:
         - hosts:
-            - wallet.dome-marketplace-lcl.org.org
+            - wallet.dome-marketplace-lcl.org
           secretName: wallet-tls-secret
     ## deployment specific configuration
     app:
@@ -27,11 +27,11 @@ wallet:
       basePath: /wallet-api
       walletUi:
         scheme: https
-        domain: wallet.dome-marketplace-lcl.org.org
+        domain: wallet.dome-marketplace-lcl.org
       authServer:
         external:
           scheme: https
-          domain: wallet.dome-marketplace-lcl.org.org
+          domain: wallet.dome-marketplace-lcl.org
           port: 443
           path: /keycloak/realms/wallet
         internal:
@@ -98,22 +98,22 @@ wallet:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-in2-test-issuer
       hosts:
-        - host: wallet.dome-marketplace-lcl.org.org
+        - host: wallet.dome-marketplace-lcl.org
           paths:
             - path: /
               pathType: Prefix
       tls:
         - hosts:
-            - wallet.dome-marketplace-lcl.org.org
+            - wallet.dome-marketplace-lcl.org
           secretName: wallet-tls-secret
     ## deployment specific configuration
     app:
       internalServerPort: 8080
       walletApi:
         # Este internalDomain es en realidad el external
-        internalDomain: https://wallet.dome-marketplace-lcl.org.org/wallet-api
+        internalDomain: https://wallet.dome-marketplace-lcl.org/wallet-api
         # ws = sin certificado, wss = con certificado
-        websocketExternalDomain: wss://wallet.dome-marketplace-lcl.org.org/wallet-api
+        websocketExternalDomain: wss://wallet.dome-marketplace-lcl.org/wallet-api
 #        websocketPath: /api/v1/pin
 #        executeContentPath: /api/v1/execute-content
 #        requestCredentialPath: /api/v1/request-credential
@@ -123,7 +123,7 @@ wallet:
 #        requestSignedCredentialPath: /api/v1/request-signed-credential
 #        cborPath: /api/v1/vp/cbor
       iam:
-        external_domain: https://wallet.dome-marketplace-lcl.org.org/keycloak
+        external_domain: https://wallet.dome-marketplace-lcl.org/keycloak
 #        realm_path: /realms/wallet
 
   ## configuration for the dome-wallet-keycloak
@@ -145,20 +145,20 @@ wallet:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-in2-test-issuer
       hosts:
-        - host: wallet.dome-marketplace-lcl.org.org
+        - host: wallet.dome-marketplace-lcl.org
           paths:
             - path: /keycloak
               pathType: Prefix
       tls:
         - hosts:
-            - wallet.dome-marketplace-lcl.org.org
+            - wallet.dome-marketplace-lcl.org
           secretName: wallet-tls-secret
     ## deployment specific configuration
     app:
       internalServerPort: 8080
       keycloak:
-        hostnameUrl: "https://wallet.dome-marketplace-lcl.org.org/keycloak"
-        adminUrl: "https://wallet.dome-marketplace-lcl.org.org/keycloak"
+        hostnameUrl: "https://wallet.dome-marketplace-lcl.org/keycloak"
+        adminUrl: "https://wallet.dome-marketplace-lcl.org/keycloak"
         relativePath: "/keycloak/"
         admin: admin
         password: admin
