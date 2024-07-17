@@ -10,7 +10,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: argocd.wallet.dome-marketplace-lcl.org
+  - host: argocd.dome-marketplace-lcl.org
     http:
       paths:
         - path: /
@@ -22,5 +22,5 @@ spec:
                 name: https
   tls:
     - hosts:
-      - argocd.wallet.dome-marketplace-lcl.org
+      - argocd.dome-marketplace-lcl.org
       secretName: in2-dev-tls
