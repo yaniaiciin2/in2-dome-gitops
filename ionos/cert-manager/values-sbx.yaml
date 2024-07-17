@@ -1,5 +1,5 @@
 dome:
   env: in2-test
-  dnsName: in2-dome-marketplace-test.org
+  dnsName: dome-marketplace-lcl.org
   maintainer:
     email: domesupport@in2.es
