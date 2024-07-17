@@ -4,8 +4,8 @@ title: IN2 DOME GitOps
 version: 0.0.1
 date: 2024-05-29
 editor:
-    name: Oriol Canadés
-    email: oriol.canades@in2.es 
+  name: Oriol Canadés
+  email: oriol.canades@in2.es 
 ---
 
 <h1>IN2 DOME GitOps</h1>
@@ -13,6 +13,7 @@ editor:
 <h2>Table of Contents</h2>
 
 # Prerequisites
+
 - ionosctl-cli
 - jq
 - kubectl
@@ -22,7 +23,8 @@ editor:
 
 ## 1. Login into IONOS using the ionosctl-cli
 
-> NOTE: to get the token, you will need to access the [IONOS Cloud Panel](https://dcd.ionos.com/) and create a new API token: Management > Token Management > Generate Token.
+> NOTE: to get the token, you will need to access the [IONOS Cloud Panel](https://dcd.ionos.com/) and create a new API
+> token: Management > Token Management > Generate Token.
 
 ```bash
 ionosctl login -t <token>
@@ -82,7 +84,7 @@ kubectl config use-context cluster-admin@in2-ssi-dev-k8s
 kubectl create namespace argocd
 ```
 
-## 2 Deploy ArgoCD with Extensions
+## 2. Deploy ArgoCD with Extensions
 
 ```bash
 kubectl apply -k ./extension/ -n argocd
@@ -108,30 +110,43 @@ kubectl apply -f applications_dev/sealed-secrets.yaml -n argocd
 kubectl apply -f applications_dev/ingress.yaml -n argocd
 ```
 
+## 6. (Optional) Deploy ArgoCD Server Ingress with Extensions
+
+You can deploy ArgoCD Server Ingress to access to the ArgoCD UI using the external domain.
+
+```bash
+kubectl apply -k ./extension-argocd-ui/ -n argocd
+```
+
 > NOTE: You can get all the applications deployed in the argocd namespace by running the following command:
 
 ```bash
 kubectl get applications -n argocd
 ```
 
+# Setup External DNS Ionos Webhook
+
+Follow the steps in: [README.md](doc%2Fexternal-dns-ionos-webhook%2FREADME.md)
+
 # ArgoCD
 
-## 1. Install the ArgoCD CLI
+## 1. Get your ArgoCD Admin Password
 
 ```bash
-brew install argocd
+kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
 ```
 
 ## 2. Access to the ArgoCD UI
+
+You can access from your machine:
 
 ```bash
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
-> NOTE: Open your browser and go to [http://localhost:8080](http://localhost:8080) and login with the default credentials: `admin`/`admin`.
+> NOTE: Open your browser and go to [http://localhost:8080](http://localhost:8080) and login with the `admin` user and
+> the password get in the previous step.
 
-## 3. Get the ArgoCD password
-
-```bash
-argocd admin initial-password -n argocd
-```
+Or if you installed ArgoCD Server Ingress you can Open your browser and go to
+[https://argocd.dome-marketplace-lcl.org](https://argocd.dome-marketplace-lcl.org) and login with the `admin` user and
+the password get in the previous step.
