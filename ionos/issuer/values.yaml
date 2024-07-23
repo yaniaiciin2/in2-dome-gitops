@@ -289,6 +289,9 @@ issuer:
       mail:
         host: smtp.ionos.de
         port: 587
+        from: digitalidentitysupport@dome-marketplace.eu
+        fromDisplayName: Digital Identity Support Dome
+        replyTo: digitalidentitysupport@dome-marketplace.eu
         existingSecret:
           enabled: true
           name: issuer-keycloak-mail-secret
