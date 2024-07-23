@@ -214,7 +214,7 @@ issuer:
       repository: in2workspace/dome-issuer-keycloak
       pullPolicy: Always
       # Overrides the image tag whose default is the chart appVersion.
-      tag: v1.0.0
+      tag: v1.0.0-LCL
     readinessProbe:
       path: /issuer-keycloak/health
     livenessProbe:
@@ -286,6 +286,22 @@ issuer:
           enabled: false
           name: keycloak-secrets
           passwordKey: keycloakDbPassword
+      mail:
+        host: smtp.ionos.de
+        port: 587
+        existingSecret:
+          enabled: true
+          name: issuer-keycloak-mail-secret
+          userKey: username
+          passwordKey: password
+        properties:
+          mail:
+            smtp:
+              auth: true
+              starttls:
+                enable: true
+              ssl:
+                enable: false
 
     # Issuer API Configuration
     issuerApi:
