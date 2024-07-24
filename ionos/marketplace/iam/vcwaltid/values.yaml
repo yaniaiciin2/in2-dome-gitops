@@ -4,9 +4,9 @@ did: did:web:dome-marketplace-sbx.org
 ingress:
   enabled: true
   annotations: 
-    cert-manager.io/cluster-issuer: letsencrypt-sbx-issuer
+    cert-manager.io/cluster-issuer: letsencrypt-in2-test-issuer
   class: nginx
-  host: dome-marketplace-sbx.org
+  host: dome-marketplace-lcl.org
   tls: 
     enabled: true
 
