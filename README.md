@@ -47,14 +47,14 @@ watch ionosctl k8s cluster get -i $IN2_DOME_DEV_K8S_CLUSTER_ID
 ## 4. Create a Node-Pool
 
 ```bash
-export IN2_DOME_DEV_K8S_DEFAULT_NODE_POOL_ID=$(ionosctl k8s nodepool create --cluster-id $IN2_DOME_DEV_K8S_CLUSTER_ID --name default-pool --node-count 2 --ram 8192 --storage-size 10 --datacenter-id $IN2_DOME_DEV_DATACENTER_ID --cpu-family "INTEL_SKYLAKE"  -o json | jq -r '.items[0].id')
+export IN2_DOME_DEV_K8S_DEFAULT_NODE_POOL_ID=$(ionosctl k8s nodepool create --cluster-id $DOME_K8S_CLUSTER_ID --name default-pool --node-count 4 --ram 32768 --storage-size 100 --storage-type SSD --datacenter-id $DOME_DATACENTER_ID --cpu-family "INTEL_SKYLAKE"  -o json | jq -r '.items[0].id')
 watch ionosctl k8s nodepool get --nodepool-id $IN2_DOME_K8S_DEFAULT_NODEPOOL_ID --cluster-id $IN2_DOME_DEV_K8S_CLUSTER_ID
 ```
 
 ## 5. Create a Node-Pool for Ingress
 
 ```bash
-ionosctl k8s nodepool create --cluster-id $IN2_DOME_DEV_K8S_CLUSTER_ID \    --name ingress --node-count 1 --datacenter-id $IN2_DOME_DEV_DATACENTER_ID --cpu-family "INTEL_SKYLAKE" --labels nodepool=ingress
+ionosctl k8s nodepool create --cluster-id $DOME_K8S_CLUSTER_ID --name ingress-pool --node-count 1 --ram 4096 --storage-size 10 --storage-type SSD --datacenter-id $DOME_DATACENTER_ID --cpu-family "INTEL_SKYLAKE" --labels nodepool=ingress
 ```
 
 ## 6. Get the kubeconfig file and set the KUBECONFIG variable
