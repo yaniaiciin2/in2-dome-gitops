@@ -93,7 +93,7 @@ kubectl apply -k ./extension/ -n argocd
 ## 3. Deploying Namespaces Application
 
 ```bash
-kubectl apply -f applications_dev/namespaces.yaml -n argocd
+kubectl apply -f applications/namespaces.yaml -n argocd
 ```
 
 ## 4. Deploying Sealed-Secrets Application
@@ -101,16 +101,22 @@ kubectl apply -f applications_dev/namespaces.yaml -n argocd
 > NOTE: This environment is for dev purposes, we do not need to encrypt the secrets.
 
 ```bash
-kubectl apply -f applications_dev/sealed-secrets.yaml -n argocd
+kubectl apply -f applications/sealed-secrets.yaml -n argocd
 ```
 
 ## 5. Deploying Ingress Application
 
 ```bash
-kubectl apply -f applications_dev/ingress.yaml -n argocd
+kubectl apply -f applications/ingress.yaml -n argocd
 ```
 
-## 6. (Optional) Deploy ArgoCD Server Ingress with Extensions
+## 6. Deploying Ingress Application
+
+```bash
+kubectl apply -f applications/cert-manager.yaml -n argocd
+```
+
+## 7. (Optional) Deploy ArgoCD Server Ingress with Extensions
 
 You can deploy ArgoCD Server Ingress to access to the ArgoCD UI using the external domain.
 
