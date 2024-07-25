@@ -7,5 +7,5 @@ appVersion: 0.1.0
 dependencies:
   - name: access-node
     condition: access-node.enabled
-    repository: https://dome-marketplace.github.io/access-node
-    version: 1.0.0-PRE-29
+    repository: https://in2workspace.github.io/helm-charts
+    version: 0.1.4
