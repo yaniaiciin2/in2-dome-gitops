@@ -8,4 +8,4 @@ dependencies:
   - name: access-node
     condition: access-node.enabled
     repository: https://in2workspace.github.io/helm-charts
-    version: 0.1.4
+    version: 1.0.0-PRE-29
