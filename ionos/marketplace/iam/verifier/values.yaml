@@ -36,12 +36,12 @@ vcverifier:
       cert-manager.io/cluster-issuer: letsencrypt-in2-test-issuer
     className: nginx
     hosts:
-      - host: dome-marketplace-lcl.org
+      - host: verifier.dome-marketplace-lcl.org
         paths:  
           - "/"
     tls:
       - hosts: 
-          - dome-marketplace-lcl.org
+          - verifier.dome-marketplace-lcl.org
         secretName: verifier-tls-sec
 
 
